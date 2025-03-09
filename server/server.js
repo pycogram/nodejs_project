@@ -36,7 +36,8 @@ app.get("*", (req, res) =>
 mongoose.connect(process.env.DB_URL, {dbName: "dbnodejstut"})
 .then(() => {
     console.log(`connected to DB successfully`);
-    app.listen(process.env.PORT, 'localhost', () => console.log(`listening to the server`));
+    //app.listen(3001, 'localhost', () => console.log(`listening to the server`));
+    app.listen(3001, () => console.log(`listening to the server`));
 })
 .catch((err) => {
     console.log(`DB error - ${err}`)
