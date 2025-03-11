@@ -36,8 +36,8 @@ const Login = () => {
 
             //update user state
             setUser({
-                email,
-                post: []
+                email: email,
+                posts: []
             });
 
             navigate('/dashboard');
