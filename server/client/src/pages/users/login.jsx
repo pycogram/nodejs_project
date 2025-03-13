@@ -34,13 +34,13 @@ const Login = () => {
             // login user
             const data = await loginUser(email, password);
 
+            navigate('/dashboard');
+
             //update user state
             setUser({
                 email,
                 posts: []
             });
-
-            navigate('/dashboard');
 
         } catch(err){
             setError(err.message);
