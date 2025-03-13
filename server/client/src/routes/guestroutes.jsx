@@ -6,7 +6,7 @@ const GuestRoutes = () => {
     const {user} = useContext(UserContext);
     console.log(user);
     return ( 
-        ! user.email ? <Outlet /> : <Navigate to={'/dashboard'} />
+        ! user?.email ? <Outlet /> : <Navigate to={'/dashboard'} />
     );
 }
  
