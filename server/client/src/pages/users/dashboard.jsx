@@ -65,7 +65,7 @@ const Dashboard = () => {
             }
             {
                 ! loadingLogo && post.map(eachPost => <div key={eachPost._id}> 
-                     <JustPost getPost={eachPost} > 
+                     <JustPost postData={eachPost} > 
                         <div className="flex gap-x-0.5 text-blue-400">
                             <Link to={"/updatepost"} state={eachPost} title="Edit" className="fa-solid fa-pen-to-square nav-link" />
                             <button className="fa-solid fa-trash nav-link" title="Delete" onClick={() => handleDelete(eachPost._id)}></button> 

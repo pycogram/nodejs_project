@@ -36,7 +36,7 @@ const Login = () => {
 
             //update user state
             setUser({
-                email: email,
+                email,
                 posts: []
             });
 

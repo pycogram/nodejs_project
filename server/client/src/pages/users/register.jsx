@@ -31,10 +31,10 @@ const Register = () => {
             const data = await registerUser(formData);
 
             // update user state
-            // setUser({
-            //     email: formData.email,
-            //     posts: []
-            // });
+            setUser({
+                email: formData.email,
+                posts: []
+            });
 
             const {email, message} = data;
             navigate('/login', {state: {email, message}});

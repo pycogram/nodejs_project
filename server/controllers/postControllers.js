@@ -12,7 +12,7 @@ const getAllPost = async (req, res) => {
         const data = await postModel.find()
                                     .sort({createdAt: "desc"})
                                     .populate('user_id', 'email')  
-                                    .exec();       
+                                    .exec(); 
 
         if (data.length === 0) {
             return res.status(404).json({

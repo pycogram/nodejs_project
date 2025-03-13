@@ -18,18 +18,14 @@ function App() {
           <Route path='/' element={<Layout />}>
             <Route index element={<Home />}/>
 
-            <Route element={<UserRoutes />}>
+
                 <Route path='dashboard' element={<Dashboard />} />
                 <Route path='createpost' element={<CreatePost />} />
                 <Route path='updatepost' element={<UpdatePost />} />
-                <Route path='*' element={<Dashboard />} />
-              </Route>
 
-              <Route element={<GuestRoutes />}>
+
                 <Route path='login' element={<Login />} />
                 <Route path='register' element={<Register />} />
-                <Route path='*' element={<Login />} />
-              </Route>
 
           </Route>
         </Routes>

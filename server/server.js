@@ -31,13 +31,18 @@ app.get("*", (req, res) =>
     res.sendFile(path.join(__dirname, "/client/dist/index.html"))
 );
 
+app.get("/post", (req, res) => {
+    console.log("Sending Data:", posts); // Log before sending response
+    res.json(posts);
+  });
+
 
 // connect to db
 mongoose.connect(process.env.DB_URL, {dbName: "dbnodejstut"})
 .then(() => {
     console.log(`connected to DB successfully`);
-    //app.listen(3001, 'localhost', () => console.log(`listening to the server`));
-    app.listen(3001, () => console.log(`listening to the server`));
+    //app.listen(process.env.PORT || 5000, 'localhost', () => console.log(`listening to the server`));
+   app.listen(process.env.PORT || 5000, () => console.log(`listening to the server`));
 })
 .catch((err) => {
     console.log(`DB error - ${err}`)
