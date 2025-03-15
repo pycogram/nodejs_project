@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { deleteUserPost, getPost } from "../../controllers/postControllers";
 import { PostContext } from "../../contexts/postContexts";
 import JustPost from "../../components/post";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Success from "../../components/success";
 import { UserContext } from "../../contexts/userContexts";
 
@@ -21,6 +21,8 @@ const Home = () => {
 
     // setup loading state
     const [loadingLogo, setLoadingLogo] = useState(true);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
     
@@ -71,6 +73,17 @@ const Home = () => {
         }, 1000);
     }
 
+    const handleReactReport = (getText) => {
+        const getTextX = getText.toLowerCase();
+
+        console.log(user.email);
+
+        if(!user?.email){
+            navigate('/login', {state: {message: `To ${getTextX} the post, pls login in`}});
+        }
+
+    }
+
     return ( 
         <div className="grid justify-center">
                 {! loadingLogo && <h2 className="text-center">Post Feed</h2>}
@@ -93,10 +106,10 @@ const Home = () => {
                                         user?.email === eachPost?.user_id?.email && <button onClick={() => handleDelete(eachPost._id)} className="fa-solid fa-trash nav-link" title="Delete"><p className="text-report">delete</p></button> 
                                     }
                                     {
-                                        user?.email !== eachPost?.user_id?.email && <button className="fa-solid fa-bug nav-link" title="Report"><p className="text-report">report</p></button>
-                                    }
+                                        user?.email !== eachPost?.user_id?.email && <button onClick={() => handleReactReport("Report")} className="fa-solid fa-bug nav-link" title="Report"><p className="text-report">report</p></button> 
+                                    }                                                   
 
-                                    <button className="fa-solid fa-heart nav-link" title="React"><p className="text-report">react</p></button>
+                                    <button onClick={() => handleReactReport("React to")} className="fa-solid fa-heart nav-link" title="React"><p className="text-report">react</p></button>
 
                                 </div> 
                             </JustPost>

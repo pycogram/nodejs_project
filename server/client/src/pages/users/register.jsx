@@ -52,6 +52,7 @@ const Register = () => {
                 <input value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} type="email" placeholder="Email Address" className="input" autoFocus/>
                 <input value={formData.password} onChange={(e) => setFormData({...formData, password: e.target.value})} type="password" placeholder="Password" className="input"/>
                 <input value={formData.confirm_password} onChange={(e) => setFormData({...formData, confirm_password: e.target.value})} type="password" placeholder="Confirm Password" className="input"/>
+                <p className="mb-2 text-end">No account? <span>Pls <a href="/login" className="text-blue-900 font-bold">Login</a></span></p>
                 <button className="btn">Register</button>
             </form>
         </section>

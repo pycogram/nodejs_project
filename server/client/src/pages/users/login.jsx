@@ -54,6 +54,7 @@ const Login = () => {
             <form onSubmit={handleLogin}>
                 <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email Address" className="input"/>
                 <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" className="input"/>
+                <p className="mb-2 text-end">No account? <span>Pls <a href="/register" className="text-blue-900 font-bold">Register</a></span></p>
                 <button className="btn">Login</button>
             </form>
         </section>
