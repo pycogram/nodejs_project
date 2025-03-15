@@ -85,19 +85,19 @@ const Home = () => {
                     //post && post.map((eachPost) => 
                         <div key={eachPost._id}>
                             <JustPost postData={eachPost}>
-                                <div className="block gap-x-0.5 text-blue-400">
+                                <div className="flex gap-x-1.5 text-blue-400">
                                     {   
-                                        user?.email === eachPost?.user_id?.email && <Link to={"/updatepost"} state={eachPost} title="Edit" className="fa-solid fa-pen-to-square nav-link" />
+                                        user?.email === eachPost?.user_id?.email && <Link to={"/updatepost"} state={eachPost} title="Edit" className="fa-solid fa-pen-to-square nav-link"><p className="text-report">edit</p></Link>
                                     }
                                     { 
-                                        user?.email === eachPost?.user_id?.email && <button onClick={() => handleDelete(eachPost._id)} className="fa-solid fa-trash nav-link" title="Delete"></button> 
+                                        user?.email === eachPost?.user_id?.email && <button onClick={() => handleDelete(eachPost._id)} className="fa-solid fa-trash nav-link" title="Delete"><p className="text-report">delete</p></button> 
                                     }
                                     {
-                                        user?.email !== eachPost?.user_id?.email && <button className="fa-solid fa-bug nav-link" title="Report"></button>
+                                        user?.email !== eachPost?.user_id?.email && <button className="fa-solid fa-bug nav-link" title="Report"><p className="text-report">report</p></button>
                                     }
-                                    {
-                                        user?.email !== eachPost?.user_id?.email && <button className="fa-solid fa-heart nav-link" title="React"></button>
-                                    }
+
+                                    <button className="fa-solid fa-heart nav-link" title="React"><p className="text-report">react</p></button>
+
                                 </div> 
                             </JustPost>
                         </div>

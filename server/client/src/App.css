@@ -7,7 +7,7 @@
   @apply bg-white px-5 pt-5 pb-10 rounded-lg shadow-lg md:w-lg mx-auto
 }
 .cardUser{
-  @apply bg-white px-4 py-1 justify-between items-center rounded-lg shadow-lg flex w-full md:w-lg mx-auto
+  @apply bg-white px-4 py-3 border-1 border-amber-100 justify-between items-center rounded-lg shadow-lg block w-full md:w-lg mx-auto
 }
 .title{
   @apply font-bold my-3 text-2xl
@@ -23,4 +23,9 @@
 }
 .btn{
   @apply block w-full bg-indigo-500 text-white rounded-md p-2 hover:bg-indigo-600 active:bg-indigo-700
+}
+.text-report{
+  font-size: 6px;
+  font-weight: bold;
+  @apply text-indigo-400
 }
