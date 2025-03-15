@@ -8,7 +8,6 @@ import Success from "../../components/success";
 const Login = () => {
     // use usercontext
     const {user, setUser} = useContext(UserContext);
-    console.log(user);
 
     const location = useLocation();
     const regInfo = location.state ?? "";

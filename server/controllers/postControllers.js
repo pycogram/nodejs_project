@@ -3,7 +3,6 @@ import postModel from '../models/postModels.js';
 import userModel from '../models/userModels.js';
 
 /* ============== get all post================ */
-
 const getAllPost = async (req, res) => {
 
     // console.log("Registered Models:", mongoose.modelNames());

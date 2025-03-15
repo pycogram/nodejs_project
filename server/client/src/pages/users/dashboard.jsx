@@ -56,7 +56,7 @@ const Dashboard = () => {
 
     return ( 
         <div className="grid justify-center">
-            {! loadingLogo && <h2 className="text-center mt-4">{localStorage.getItem('email')}'s Account</h2>}
+            {! loadingLogo && <h2 className="text-center mt-2 mb-4">{localStorage.getItem('email')}'s Account</h2>}
             {
                 getNotifyUpdateMsg && ! loadingLogo ? <Success getSuccessStatus={getNotifyUpdateMsg} /> : ""
             }

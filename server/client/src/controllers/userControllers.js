@@ -55,8 +55,8 @@ const registerUser = async ({email, password, confirm_password}) => {
         throw new Error(`${data.message}`);
     }
 
-    localStorage.setItem('token', data.getTokenSignature);
-    localStorage.setItem('email', data.email);
+    // localStorage.setItem('token', data.getTokenSignature);
+    // localStorage.setItem('email', data.email);
 
     return data;
 }

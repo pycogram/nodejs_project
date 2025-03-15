@@ -5,7 +5,7 @@ import { Navigate, Outlet } from "react-router-dom";
 const UserRoutes = () => {
     const {user} = useContext(UserContext);
     return ( 
-        user?.email ? <Outlet /> : <Navigate to={'/login'} />
+        user?.email ? <Outlet /> : <Navigate to={'/register'} />
     );
 }
  
