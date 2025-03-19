@@ -7,10 +7,13 @@ const Layout = () => {
     const navigate = useNavigate();
 
     const logOut = () => {
+        
         if(confirm('Do you want to logout?')){
             // localStorage.clear();
+            
             localStorage.removeItem('token');
             localStorage.removeItem('email');
+
             setUser({email: null, post: []});
             navigate('/login');
         }

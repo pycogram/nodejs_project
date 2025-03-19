@@ -16,10 +16,10 @@ const Login = () => {
     const [error, setError] = useState("");
     
     // Success state
-    const [successStatus, setSuccessStatus] = useState(regInfo.message);
+    const [successStatus, setSuccessStatus] = useState(regInfo?.message);
 
     // Input state
-    const [email, setEmail] = useState(regInfo.email);
+    const [email, setEmail] = useState(regInfo?.email);
     const [password, setPassword] =  useState("");
 
     const navigate = useNavigate();
@@ -46,6 +46,10 @@ const Login = () => {
         }
     }
 
+    const goToRegisterF = () => {
+        navigate('/register');
+    }
+
     return ( 
         <section className="card">
             <h1 className="title">Login</h1>
@@ -54,7 +58,7 @@ const Login = () => {
             <form onSubmit={handleLogin}>
                 <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email Address" className="input"/>
                 <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" className="input"/>
-                <p className="mb-2 text-end">No account? <span>Pls <a href="/register" className="text-blue-900 font-bold">Register</a></span></p>
+                <p onClick={goToRegisterF} className="mb-2 text-end">No account? <span>Pls <span className="text-blue-900 font-bold cursor-pointer">Register</span></span></p>
                 <button className="btn">Login</button>
             </form>
         </section>
