@@ -71,6 +71,7 @@ const createUser = async(req, res) => {
 const loginUser = async(req, res) => {
     //get a req from the user
     const {email, password} = req.body;
+    console.log(email, password);
 
     // check if the fields are not empty
     if(! email || ! password){
@@ -80,7 +81,7 @@ const loginUser = async(req, res) => {
     }
 
     // check if email exist
-    const userFound = await userModel.findOne({email});
+const userFound = await userModel.findOne({ email }).select('+password');
     if(! userFound ){
         return res.status(400).json({
             status: "fail",

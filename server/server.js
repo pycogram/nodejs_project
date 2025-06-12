@@ -7,7 +7,7 @@ import cors from 'cors';
 //import 'dotenv/config.js';
 
 import dotenv from 'dotenv';
-dotenv.config({ path: './config.env' }); // Load environment variables from config.env file
+dotenv.config({ path: './config.env' }); 
 
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -24,7 +24,7 @@ if(process.env.NODE_ENV !== 'production') {
     app.use(
         cors({
             origin: 'http://localhost:5173', // allow requests from this origin
-            methods: ['GET', 'POST', 'PUT', 'DELETE'], // allowed methods
+            methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], // allowed methods
             credentials: true, // allow credentials
         })
     )
