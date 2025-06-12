@@ -2,7 +2,12 @@ import express from 'express';
 import { postRoutes } from './routes/postRoutes.js';
 import mongoose from 'mongoose';
 import { userRoutes } from './routes/userRoutes.js';
-import 'dotenv/config.js';
+import cors from 'cors';
+
+//import 'dotenv/config.js';
+
+import dotenv from 'dotenv';
+dotenv.config({ path: './config.env' }); // Load environment variables from config.env file
 
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -15,6 +20,16 @@ const __dirname = path.dirname(__filename);
 
 const app = express(); // initiate express obj to create a server
 
+if(process.env.NODE_ENV !== 'production') {
+    app.use(
+        cors({
+            origin: 'http://localhost:5173', // allow requests from this origin
+            methods: ['GET', 'POST', 'PUT', 'DELETE'], // allowed methods
+            credentials: true, // allow credentials
+        })
+    )
+}
+
 // middleware that allow json
 app.use(express.json());
 
@@ -23,18 +38,19 @@ app.use(express.json());
 app.use('/api/post', postRoutes);
 app.use('/api/user', userRoutes);
 
-// use client app
-app.use(express.static(path.join(__dirname, "/client/dist")));
+if(process.env.NODE_ENV === 'production') {
+    // use client app
+    app.use(express.static(path.join(__dirname, "../client/dist")));
 
-// render client for any path
-app.get("*", (req, res) => 
-    res.sendFile(path.join(__dirname, "/client/dist/index.html"))
-);
-
+    // render client for any path
+    app.get("*", (req, res) => 
+        res.sendFile(path.join(__dirname, "../client/dist/index.html"))
+    );
+}
 app.get("/post", (req, res) => {
     console.log("Sending Data:", posts); // Log before sending response
     res.json(posts);
-  });
+});
 
 
 // connect to db

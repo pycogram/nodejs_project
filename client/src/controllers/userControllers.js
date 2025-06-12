@@ -1,5 +1,4 @@
 /*==================Login user==================*/
-
 const loginUser = async (email, password) => {
     if(! email){
         throw new Error('Enter email address')
@@ -27,8 +26,55 @@ const loginUser = async (email, password) => {
     return data;
 }
 
+/*==================Request code by user==================*/
+const requestCode = async (email) => {
+    if(! email){
+        throw new Error('Enter code sent to your email inbox or spam box')
+    }
+    const res = await fetch('/api/user/', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({email})
+    });
+
+    const data = await res.json();
+
+    if(! res.ok){
+        throw new Error(`${data.message}`);
+    }
+
+    return data;
+}
+
+/*==================Verify user==================*/
+const verifyUser = async (email_code) => {
+    if(! email_code){
+        throw new Error('Enter code sent to your email inbox or spam box')
+    }
+    const res = await fetch('/api/user/', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({email_code})
+    });
+
+    const data = await res.json();
+
+    if(! res.ok){
+        throw new Error(`${data.message}`);
+    }
+
+    return data;
+}
+
 /*==================Register user==================*/
-const registerUser = async ({email, password, confirm_password}) => {
+const registerUser = async ({name, email, password, confirm_password}) => {
+    if(! name){
+        throw new Error('Enter name')
+    }
     if(! email){
         throw new Error('Enter email address')
     }
@@ -46,7 +92,7 @@ const registerUser = async ({email, password, confirm_password}) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({email, password, confirm_password})
+        body: JSON.stringify({name, email, password, confirm_password})
     });
 
     const data = await res.json();
@@ -61,4 +107,4 @@ const registerUser = async ({email, password, confirm_password}) => {
     return data;
 }
 
-export {loginUser, registerUser}
+export {loginUser, registerUser, requestCode, verifyUser}

@@ -17,7 +17,7 @@ const tokenUser = (_id) => {
 // register user
 const createUser = async(req, res) => {
     //get a req from the user
-    const {email, password, confirm_password} = req.body;
+    const {name, email, password, confirm_password} = req.body;
 
     // check if the fields are not empty
     if(! email || ! password){
@@ -48,14 +48,14 @@ const createUser = async(req, res) => {
     // const getTokenSignature = tokenUser({userFound._id, userFound.email});
 
     try{
-        const userRegister = await userModel.create({email, password: hashedPassword});
+        const userRegister = await userModel.create({name, email, password: hashedPassword});
 
         // sign in user with jwtoken 
         const getTokenSignature = tokenUser(userRegister._id, userRegister._email);
 
         res.status(200).json({
             status: `success`,
-            message: `Account created successfully, Pls login`,
+            message: `Account created successfully, To login, please request for email verification code.`,
             email,
             getTokenSignature
         });
